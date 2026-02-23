@@ -8,7 +8,7 @@ Building behavioral auditing tools for LLMs: using teacher-forced confidence (rh
 
 ### Current Work
 
-**[knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity)** (v0.4.0) — Compress an LLM while auditing what it still knows. Includes `rho-audit`, a standalone behavioral auditing CLI.
+**[knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity)** (v0.4.0) — Compress an LLM while auditing what it still knows. Includes `rho-audit`, a standalone behavioral auditing CLI. Now featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools).
 
 ```bash
 pip install knowledge-fidelity
@@ -45,10 +45,14 @@ DARE-TIES gains +0.138 factual but destroys bias detection (-0.570) and sycophan
 
 | Repo | What it does |
 |------|-------------|
-| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Compress + audit LLMs with shared factual probes. `rho-audit` CLI for behavioral profiling. |
+| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Compress + audit LLMs with shared factual probes. `rho-audit` CLI for behavioral profiling. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools). |
 | [confidence-cartography](https://github.com/SolomonB14D3/confidence-cartography) | Teacher-forced confidence as a false-belief sensor. Human false-belief correlation rho=0.652 across Pythia 160M-12B. |
 | [intelligent-svd](https://github.com/SolomonB14D3/intelligent-svd) | Knowledge-preserving SVD compression. CF90 method: TruthfulQA +5%, 75% fact retention. |
-| [Awesome-LLM-Compression](https://github.com/SolomonB14D3/Awesome-LLM-Compression) | Curated list of LLM compression research. |
+| [Awesome-LLM-Compression](https://github.com/SolomonB14D3/Awesome-LLM-Compression) | Curated list of LLM compression research. First upstream contribution merged (Feb 2026). |
+
+### Paper
+
+> Sanchez, B. (2026). *Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models.* Zenodo. [doi:10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
 
 ---
 
