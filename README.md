@@ -1,43 +1,36 @@
 # Bryan — Independent ML Researcher
 
-Building behavioral auditing tools for LLMs: using teacher-forced confidence (rho) to map where factual knowledge, bias, sycophancy, and reasoning live inside transformer layers — then using that map to control what compression preserves or removes.
+Building behavioral auditing and mechanistic interpretability tools for LLMs. Current focus: mapping the **comparative anatomy of behavioral representations** — where factual knowledge, sycophancy, and bias live inside transformer layers, how they interact, and whether steering vectors transfer across architectures.
 
-**Core thesis:** Compression isn't just size reduction — it's behavioral surgery. Different behaviors are encoded in different layer regions. Once you know the map, you can selectively denoise, preserve, or steer.
+**Core thesis:** Social compliance and social awareness share representational capacity at mid-depth transformer layers. Factual representations are architecturally universal; sycophancy suppression is not. Activation steering is architecture-contingent — each model family needs its own behavioral map.
 
 ---
 
 ### Current Work
 
-**[knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity)** (v0.4.0) — Compress an LLM while auditing what it still knows. Includes `rho-audit`, a standalone behavioral auditing CLI. Now featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools).
+**[knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity)** (v1.1.0) — Compress LLMs while auditing what they still know. SVD compression + behavioral auditing + activation steering in one toolkit. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools).
 
 ```bash
 pip install knowledge-fidelity
 rho-audit Qwen/Qwen2.5-7B-Instruct --behaviors all
 ```
 
-**Key results:**
+**v1.1.0 highlights — Comparative Anatomy of Behavioral Representations:**
 
-- SVD compression at 70% rank *improves* Mandela rho from 0.829 to 0.943 on Qwen-7B — compression as denoising
-- Behavioral localization via freeze-ratio sweep (Qwen2.5-7B, SVD 70%, LoRA recovery):
+- **Behavioral decoupling at Layer 17**: Sycophancy resistance 3.4x (0.120 to 0.413) at the cost of bias detection (slope = -1.37). Social compliance and social awareness share representational capacity.
+- **Sycophancy suppression is architecture-contingent**: The Qwen L17 sweet spot does not exist in Mistral — no layer at any depth achieves meaningful sycophancy improvement. "Alignment Kill Zone" at Mistral L14-L18 destroys bias without sycophancy benefit.
+- **Factual steering transfers universally**: +0.152 on Qwen, +0.117 on Mistral, both at ~75% depth. This is an architectural universal, not training-specific.
+- **SVD compression as denoising**: Mandela rho 0.829 to 0.943 on Qwen-7B at 70% rank.
 
-| Behavior | Baseline | Best delta | Best freeze | Where it lives |
-|----------|:--------:|:----------:|:-----------:|----------------|
-| Factual  | 0.474 | **+0.072** | 75% | Early layers |
-| Bias     | 0.773 | **+0.093** | 25% | Late layers |
-| Sycophancy | 0.120 | **+0.027** | 50% | Early layers |
-| Reasoning | 0.010 | **+0.040** | 50% | Late layers |
-| Toxicity | 0.521 | -0.005 | — | Immovable |
+**Comparative anatomy table (Qwen vs Mistral):**
 
-- Merge method behavioral audit — SLERP/TIES/DARE-TIES on Qwen2.5-7B-Instruct + Coder:
-
-| Method | Factual ρ | Bias ρ | Sycophancy ρ |
-|--------|:---------:|:------:|:------------:|
-| Baseline | 0.474 | **0.773** | 0.120 |
-| SLERP | 0.517 | 0.613 | 0.140 |
-| TIES | 0.546 | 0.363 | **0.280** |
-| DARE-TIES | **0.612** | 0.203 | 0.007 |
-
-DARE-TIES gains +0.138 factual but destroys bias detection (-0.570) and sycophancy. Standard benchmarks won't catch this — `rho-audit` does.
+| Property | Qwen2.5-7B | Mistral-7B |
+|----------|:----------:|:----------:|
+| Factual sweet spot | L24 (86%), +0.152 | L24 (75%), +0.117 |
+| Sycophancy sweet spot | L17 (61%), +0.293 | *None* (+0.013 max) |
+| Kill zone | L17 (bias: -0.437) | L14-L18 (bias: -0.460) |
+| Factual transfer | Yes | Yes |
+| Sycophancy transfer | — | No |
 
 ---
 
@@ -45,24 +38,12 @@ DARE-TIES gains +0.138 factual but destroys bias detection (-0.570) and sycophan
 
 | Repo | What it does |
 |------|-------------|
-| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Compress + audit LLMs with shared factual probes. `rho-audit` CLI for behavioral profiling. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools). |
+| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Compress + audit LLMs with shared factual probes. Multi-vector steering, cross-model validation, `rho-audit` CLI. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools). |
 | [confidence-cartography](https://github.com/SolomonB14D3/confidence-cartography) | Teacher-forced confidence as a false-belief sensor. Human false-belief correlation rho=0.652 across Pythia 160M-12B. |
 | [intelligent-svd](https://github.com/SolomonB14D3/intelligent-svd) | Knowledge-preserving SVD compression. CF90 method: TruthfulQA +5%, 75% fact retention. |
-| [Awesome-LLM-Compression](https://github.com/SolomonB14D3/Awesome-LLM-Compression) | Curated list of LLM compression research. First upstream contribution merged (Feb 2026). |
-
-### Paper
-
-> Sanchez, B. (2026). *Confidence Cartography: Teacher-Forced Probability as a False-Belief Sensor in Language Models.* Zenodo. [doi:10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
-
----
 
 ### What's Next
 
-1. **Rho leaderboard** — Expand merge audit to Mistral-7B, Llama-3.1-8B, and more merge recipes; publish public behavioral leaderboard
-2. **Behaviorally-aware merging** — Use per-behavior rho scores as optimization targets for layer-wise merge weights
-3. **Steering vectors** — Extract activation directions from rho probes for runtime behavioral control
-4. **Paper** — Layer localization + merge audit findings are novel; targeting a workshop or findings track submission
-
----
-
-*All experiments on Apple Silicon (M3 Ultra, 192GB). No cloud compute.*
+- Orthogonal steering methods to break the sycophancy-bias coupling
+- Third architecture validation (Llama-3.1-8B)
+- Training-time behavioral disentanglement
