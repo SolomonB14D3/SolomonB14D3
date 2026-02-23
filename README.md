@@ -1,6 +1,6 @@
 # Bryan — Independent ML Researcher
 
-Building behavioral auditing and mechanistic interpretability tools for LLMs. Current focus: mapping the **comparative anatomy of behavioral representations** — where factual knowledge, sycophancy, and bias live inside transformer layers, how they interact, and whether steering vectors transfer across architectures.
+Building behavioral auditing and mechanistic interpretability tools for LLMs. Current focus: **general-purpose behavioral diagnostics** — measuring what models know, where they're biased, and when they're sycophantic, using teacher-forced confidence probes and activation steering.
 
 **Core thesis:** Social compliance and social awareness share representational capacity at mid-depth transformer layers. Factual representations are architecturally universal; sycophancy suppression is not. Activation steering is architecture-contingent — each model family needs its own behavioral map.
 
@@ -8,21 +8,29 @@ Building behavioral auditing and mechanistic interpretability tools for LLMs. Cu
 
 ### Current Work
 
-**[knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity)** (v1.1.0) — Compress LLMs while auditing what they still know. SVD compression + behavioral auditing + activation steering in one toolkit. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools).
+**[rho-eval](https://pypi.org/project/rho-eval/)** (v2.0.0) — Drop-in behavioral audit for any LLM. 806 probes across 5 dimensions, no internet required. Plugin architecture for custom behaviors.
 
 ```bash
-pip install knowledge-fidelity
-rho-audit Qwen/Qwen2.5-7B-Instruct --behaviors all
+pip install rho-eval
+rho-eval Qwen/Qwen2.5-7B-Instruct --behaviors all --format table
 ```
 
-**v1.1.0 highlights — Comparative Anatomy of Behavioral Representations:**
+```python
+import rho_eval
 
-- **Behavioral decoupling at Layer 17**: Sycophancy resistance 3.4x (0.120 to 0.413) at the cost of bias detection (slope = -1.37). Social compliance and social awareness share representational capacity.
-- **Sycophancy suppression is architecture-contingent**: The Qwen L17 sweet spot does not exist in Mistral — no layer at any depth achieves meaningful sycophancy improvement. "Alignment Kill Zone" at Mistral L14-L18 destroys bias without sycophancy benefit.
-- **Factual steering transfers universally**: +0.152 on Qwen, +0.117 on Mistral, both at ~75% depth. This is an architectural universal, not training-specific.
-- **SVD compression as denoising**: Mandela rho 0.829 to 0.943 on Qwen-7B at 70% rank.
+report = rho_eval.audit("Qwen/Qwen2.5-7B-Instruct", behaviors="all")
+print(report.overall_status)  # PASS / WARN / FAIL
+```
 
-**Comparative anatomy table (Qwen vs Mistral):**
+**v2.0.0 highlights:**
+
+- **Plugin architecture** — `ABCBehavior` base class with `@register` decorator. Add custom behaviors in 30 lines.
+- **806 pre-sampled probes** — 5 dimensions (factual, toxicity, bias, sycophancy, reasoning), shipped as JSON, zero network dependencies.
+- **Standardized output** — `AuditReport` with PASS/WARN/FAIL thresholds (rho >= 0.5 / >= 0.2 / < 0.2), JSON/Markdown/CSV/table export.
+- **Comparison system** — `rho_eval.compare(after, before)` with IMPROVED/DEGRADED delta tables. CI-friendly exit codes.
+- **Backward compatible** — all v1.x imports and `rho-audit` CLI still work.
+
+**Earlier findings (v1.x) — Comparative Anatomy of Behavioral Representations:**
 
 | Property | Qwen2.5-7B | Mistral-7B |
 |----------|:----------:|:----------:|
@@ -30,7 +38,7 @@ rho-audit Qwen/Qwen2.5-7B-Instruct --behaviors all
 | Sycophancy sweet spot | L17 (61%), +0.293 | *None* (+0.013 max) |
 | Kill zone | L17 (bias: -0.437) | L14-L18 (bias: -0.460) |
 | Factual transfer | Yes | Yes |
-| Sycophancy transfer | — | No |
+| Sycophancy transfer | -- | No |
 
 ---
 
@@ -38,12 +46,14 @@ rho-audit Qwen/Qwen2.5-7B-Instruct --behaviors all
 
 | Repo | What it does |
 |------|-------------|
-| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Compress + audit LLMs with shared factual probes. Multi-vector steering, cross-model validation, `rho-audit` CLI. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools). |
+| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Behavioral auditing + SVD compression toolkit for LLMs. Now **rho-eval** on PyPI. Plugin architecture, 806 probes, activation steering, cross-model validation. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools). |
 | [confidence-cartography](https://github.com/SolomonB14D3/confidence-cartography) | Teacher-forced confidence as a false-belief sensor. Human false-belief correlation rho=0.652 across Pythia 160M-12B. |
 | [intelligent-svd](https://github.com/SolomonB14D3/intelligent-svd) | Knowledge-preserving SVD compression. CF90 method: TruthfulQA +5%, 75% fact retention. |
 
-### What's Next
+### Research Roadmap
 
-- Orthogonal steering methods to break the sycophancy-bias coupling
-- Third architecture validation (Llama-3.1-8B)
-- Training-time behavioral disentanglement
+1. ~~General-purpose behavioral diagnostic toolkit~~ — **Done** (rho-eval v2.0.0)
+2. **Mechanistic interpretability of behavioral subspaces** — *next*
+3. Rho-guided alignment / fine-tuning
+4. Hybrid weight + activation control framework
+5. Open behavioral benchmark suite (Fidelity-Bench 2.0)
