@@ -1,5 +1,7 @@
 # Bryan — Independent ML Researcher
 
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?logo=github)](https://github.com/sponsors/SolomonB14D3)
+
 Building behavioral auditing and mechanistic interpretability tools for LLMs. Current focus: **general-purpose behavioral diagnostics** — measuring what models know, where they're biased, and when they're sycophantic, using teacher-forced confidence probes and activation steering.
 
 **Core thesis:** Social compliance and social awareness share representational capacity at mid-depth transformer layers. Factual representations are architecturally universal; sycophancy suppression is not. Activation steering is architecture-contingent — each model family needs its own behavioral map.
