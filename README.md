@@ -2,15 +2,15 @@
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?logo=github)](https://github.com/sponsors/SolomonB14D3)
 
-Building behavioral auditing and mechanistic interpretability tools for LLMs. Current focus: **general-purpose behavioral diagnostics** — measuring what models know, where they're biased, and when they're sycophantic, using teacher-forced confidence probes and activation steering.
+Building behavioral auditing and alignment tools for LLMs. Current focus: **rho-guided alignment** — using teacher-forced confidence probes to steer fine-tuning away from behavioral damage.
 
-**Core thesis:** Social compliance and social awareness share representational capacity at mid-depth transformer layers. Factual representations are architecturally universal; sycophancy suppression is not. Activation steering is architecture-contingent — each model family needs its own behavioral map.
+**Core finding:** Standard SFT inverts toxicity discrimination in Qwen 7B (+0.145 baseline to -0.086 post-SFT, p<0.001). Adding a contrastive confidence loss during training repairs this while preserving factual gains. The contrastive signal alone (no SFT data) achieves the largest toxicity improvement of any condition tested (d=49.4 vs SFT-only).
 
 ---
 
 ### Current Work
 
-**[rho-eval](https://pypi.org/project/rho-eval/)** (v2.1.0) — Drop-in behavioral audit for any LLM. 926 probes across 5 dimensions, no internet required. Plugin architecture for custom behaviors. **Now with Apple Silicon MLX acceleration.**
+**[rho-eval](https://pypi.org/project/rho-eval/)** (v2.1.1) — Drop-in behavioral audit for any LLM. 926 probes across 6 dimensions (factual, toxicity, sycophancy, bias, reasoning, refusal), no internet required. Plugin architecture for custom behaviors. **Apple Silicon MLX acceleration. Rho-guided SFT alignment.**
 
 ```bash
 pip install rho-eval
@@ -27,16 +27,16 @@ report = audit(model=model, tokenizer=tokenizer, behaviors="all")
 # ~5x faster inference, ~10x faster training on Apple Silicon
 ```
 
-**v2.1.0 — MLX Acceleration:**
+**v2.1.1 — Rho-Guided SFT ([paper](https://github.com/SolomonB14D3/knowledge-fidelity/releases/tag/v2.1.1)):**
 
-- **Transparent MLX dispatch** — `audit()`, `analyze_confidence()`, `generate()`, and `get_mean_logprob()` auto-detect MLX models and use native Apple Silicon inference. No code changes needed.
-- **MLX training backends** — `mlx_rho_guided_sft()` for alignment, `mlx_gentle_finetune()` for post-compression recovery. Avoids PyTorch MPS NaN gradient bugs entirely.
-- **~10x training speedup** — Rho-guided SFT sweep: 22 hours (CPU PyTorch) → ~2 hours (MLX). Enables rapid iteration on alignment experiments.
-- **Bigger models on less hardware** — MLX unified memory means 7B-4bit runs on 16GB MacBooks.
-- **Plugin architecture** — `ABCBehavior` base class with `@register` decorator. Add custom behaviors in 30 lines.
-- **Comparison system** — `rho_eval.compare(after, before)` with IMPROVED/DEGRADED delta tables. CI-friendly exit codes.
+- **SFT toxicity inversion discovered and fixed** — Standard fine-tuning inverts toxicity discrimination; adding a contrastive confidence loss during training repairs it (Qwen 7B: -0.086 SFT-only to +0.804 rho-guided)
+- **Monotonic dose-response** — Behavioral preservation scales linearly with contrastive weight across both Qwen 7B and Llama 3.1-8B
+- **Contrastive-only condition** — Contrastive loss alone (no SFT data) achieves the largest effect (d=49.4), suggesting behavioral probes carry enough signal to steer training without task data
+- **Refusal robustness** — New behavioral dimension; independent from toxicity (refusal unchanged at +0.70 even when toxicity inverts)
+- **OOD transfer** — In-distribution contrastive training transfers to unseen clinical, social, and logic domains (+5pp accuracy)
+- **MLX-native training** — Full alignment pipeline runs on Apple Silicon. 7B model trains in ~10 min per condition on M3 Ultra
 
-**Earlier findings (v1.x) — Comparative Anatomy of Behavioral Representations:**
+**Earlier findings — Comparative Anatomy of Behavioral Representations:**
 
 | Property | Qwen2.5-7B | Mistral-7B |
 |----------|:----------:|:----------:|
@@ -52,7 +52,7 @@ report = audit(model=model, tokenizer=tokenizer, behaviors="all")
 
 | Repo | What it does |
 |------|-------------|
-| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Behavioral auditing + SVD compression toolkit for LLMs. Now **rho-eval** on PyPI. 926 probes, MLX-accelerated inference/training, activation steering, cross-model validation. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools). |
+| [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Behavioral auditing + alignment toolkit for LLMs. **rho-eval** on [PyPI](https://pypi.org/project/rho-eval/). 926 probes, 6 behavioral dimensions, rho-guided SFT, MLX-accelerated training. Featured in [Awesome-LLM-Compression](https://github.com/HuangOwen/Awesome-LLM-Compression#tools). |
 | [confidence-cartography](https://github.com/SolomonB14D3/confidence-cartography) | Teacher-forced confidence as a false-belief sensor. Human false-belief correlation rho=0.652 across Pythia 160M-12B. |
 | [intelligent-svd](https://github.com/SolomonB14D3/intelligent-svd) | Knowledge-preserving SVD compression. CF90 method: TruthfulQA +5%, 75% fact retention. |
 
@@ -60,6 +60,7 @@ report = audit(model=model, tokenizer=tokenizer, behaviors="all")
 
 1. ~~General-purpose behavioral diagnostic toolkit~~ — **Done** (rho-eval v2.0.0)
 2. ~~Mechanistic interpretability of behavioral subspaces~~ — **Done** (SVD subspace analysis, Grassmann angles, Universal Kill Zone discovery)
-3. **Rho-guided alignment / fine-tuning** — *in progress* (MLX + PyTorch backends, rho_weight sweep running)
-4. Hybrid weight + activation control framework
-5. Open behavioral benchmark suite (Fidelity-Bench 2.0)
+3. ~~Rho-guided alignment / fine-tuning~~ — **Done** (v2.1.1 — [paper](https://github.com/SolomonB14D3/knowledge-fidelity/releases/tag/v2.1.1), SFT inversion discovery, contrastive repair, dose-response across Qwen + Llama)
+4. **Cross-architecture and scale validation** — *in progress* (5-seed ablation running, refusal robustness, 70B planned)
+5. Hybrid weight + activation control framework
+6. Open behavioral benchmark suite (Fidelity-Bench 2.0)
