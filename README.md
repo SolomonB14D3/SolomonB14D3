@@ -33,7 +33,7 @@ rho-surgery Qwen/Qwen2.5-7B-Instruct -o ./repaired-7b/
 3. **Behavioral Phase Transitions** — Geometric scaffolding precedes behavioral emergence. [DOI: 10.5281/zenodo.18865199](https://doi.org/10.5281/zenodo.18865199)
 4. **Confidence Cartography** — Teacher-forced probability as a false-belief sensor. [DOI: 10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
 5. **CF90** — Knowledge-preserving SVD compression for LLMs. [DOI: 10.5281/zenodo.18718545](https://doi.org/10.5281/zenodo.18718545)
-6. **Contrastive Pretraining** — Behavioral emergence is a data quality threshold, not a scale threshold. [DOI: 10.5281/zenodo.18870556](https://doi.org/10.5281/zenodo.18870556)
+6. **Small Models Can Learn Complex Behaviors** — They just need the right examples. [DOI: 10.5281/zenodo.18870556](https://doi.org/10.5281/zenodo.18870556)
 
 ### Repos
 
