@@ -1,12 +1,12 @@
 # Bryan — Independent ML Researcher
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?logo=github)](https://github.com/sponsors/SolomonB14D3)
-[![Paper: SFT](https://zenodo.org/badge/DOI/10.5281/zenodo.18854944.svg)](https://doi.org/10.5281/zenodo.18854944)
-[![Paper: Grassmann](https://zenodo.org/badge/DOI/10.5281/zenodo.18865862.svg)](https://doi.org/10.5281/zenodo.18865862)
-[![Paper: Phase Transitions](https://zenodo.org/badge/DOI/10.5281/zenodo.18865199.svg)](https://doi.org/10.5281/zenodo.18865199)
-[![Paper: Confidence Cartography](https://zenodo.org/badge/DOI/10.5281/zenodo.18703506.svg)](https://doi.org/10.5281/zenodo.18703506)
+[![Paper: SFT](https://zenodo.org/badge/DOI/10.5281/zenodo.18854943.svg)](https://doi.org/10.5281/zenodo.18854943)
+[![Paper: Grassmann](https://zenodo.org/badge/DOI/10.5281/zenodo.18865861.svg)](https://doi.org/10.5281/zenodo.18865861)
+[![Paper: Phase Transitions](https://zenodo.org/badge/DOI/10.5281/zenodo.18865198.svg)](https://doi.org/10.5281/zenodo.18865198)
+[![Paper: Confidence Cartography](https://zenodo.org/badge/DOI/10.5281/zenodo.18703505.svg)](https://doi.org/10.5281/zenodo.18703505)
 [![Paper: Contrastive Pretraining](https://zenodo.org/badge/DOI/10.5281/zenodo.18870555.svg)](https://doi.org/10.5281/zenodo.18870555)
-[![Paper: CF90](https://zenodo.org/badge/DOI/10.5281/zenodo.18718545.svg)](https://doi.org/10.5281/zenodo.18718545)
+[![Paper: CF90](https://zenodo.org/badge/DOI/10.5281/zenodo.18718544.svg)](https://doi.org/10.5281/zenodo.18718544)
 
 Building behavioral auditing and alignment tools for LLMs. [Try the demo →](https://huggingface.co/spaces/bsanch52/knowledge-fidelity-demo)
 
@@ -28,11 +28,11 @@ rho-surgery Qwen/Qwen2.5-7B-Instruct -o ./repaired-7b/
 
 ### Papers
 
-1. **Rho-Guided SFT** — Post-training repair of calibration damage in LLMs. [DOI: 10.5281/zenodo.18854944](https://doi.org/10.5281/zenodo.18854944)
-2. **Grassmann Geometry of Behavioral Entanglement** — Surgery compresses subspaces, doesn't rotate them. [DOI: 10.5281/zenodo.18865862](https://doi.org/10.5281/zenodo.18865862)
-3. **Behavioral Phase Transitions** — Geometric scaffolding precedes behavioral emergence. [DOI: 10.5281/zenodo.18865199](https://doi.org/10.5281/zenodo.18865199)
-4. **Confidence Cartography** — Teacher-forced probability as a false-belief sensor. [DOI: 10.5281/zenodo.18703506](https://doi.org/10.5281/zenodo.18703506)
-5. **CF90** — Knowledge-preserving SVD compression for LLMs. [DOI: 10.5281/zenodo.18718545](https://doi.org/10.5281/zenodo.18718545)
+1. **Rho-Guided SFT** — Post-training repair of calibration damage in LLMs. [DOI: 10.5281/zenodo.18854943](https://doi.org/10.5281/zenodo.18854943)
+2. **Grassmann Geometry of Behavioral Entanglement** — Surgery compresses subspaces, doesn't rotate them. [DOI: 10.5281/zenodo.18865861](https://doi.org/10.5281/zenodo.18865861)
+3. **Behavioral Phase Transitions** — Geometric scaffolding precedes behavioral emergence. [DOI: 10.5281/zenodo.18865198](https://doi.org/10.5281/zenodo.18865198)
+4. **Confidence Cartography** — Teacher-forced probability as a false-belief sensor. [DOI: 10.5281/zenodo.18703505](https://doi.org/10.5281/zenodo.18703505)
+5. **CF90** — Knowledge-preserving SVD compression for LLMs. [DOI: 10.5281/zenodo.18718544](https://doi.org/10.5281/zenodo.18718544)
 6. **Small Models Can Learn Complex Behaviors** — They just need the right examples. [DOI: 10.5281/zenodo.18870555](https://doi.org/10.5281/zenodo.18870555)
 
 ### Repos
