@@ -5,8 +5,8 @@
 [![Paper: Grassmann](https://zenodo.org/badge/DOI/10.5281/zenodo.18865861.svg)](https://doi.org/10.5281/zenodo.18865861)
 [![Paper: Phase Transitions](https://zenodo.org/badge/DOI/10.5281/zenodo.18865198.svg)](https://doi.org/10.5281/zenodo.18865198)
 [![Paper: Confidence Cartography](https://zenodo.org/badge/DOI/10.5281/zenodo.18703505.svg)](https://doi.org/10.5281/zenodo.18703505)
-[![Paper: Contrastive Pretraining](https://zenodo.org/badge/DOI/10.5281/zenodo.18870555.svg)](https://doi.org/10.5281/zenodo.18870555)
-[![Paper: Expression Bottleneck](https://zenodo.org/badge/DOI/10.5281/zenodo.18895248.svg)](https://doi.org/10.5281/zenodo.18895248)
+[![Paper: Contrastive Pretraining](https://zenodo.org/badge/DOI/10.5281/zenodo.18895233.svg)](https://doi.org/10.5281/zenodo.18895233)
+[![Paper: Expression Bottleneck](https://zenodo.org/badge/DOI/10.5281/zenodo.18895249.svg)](https://doi.org/10.5281/zenodo.18895249)
 [![Paper: CF90](https://zenodo.org/badge/DOI/10.5281/zenodo.18718545.svg)](https://doi.org/10.5281/zenodo.18718545)
 
 Building behavioral auditing and alignment tools for LLMs. [Try the demo →](https://huggingface.co/spaces/bsanch52/knowledge-fidelity-demo)
@@ -34,8 +34,8 @@ rho-surgery Qwen/Qwen2.5-7B-Instruct -o ./repaired-7b/
 3. **Behavioral Phase Transitions** — Geometric scaffolding precedes behavioral emergence. [DOI: 10.5281/zenodo.18865198](https://doi.org/10.5281/zenodo.18865198)
 4. **Confidence Cartography** — Teacher-forced probability as a false-belief sensor. [DOI: 10.5281/zenodo.18703505](https://doi.org/10.5281/zenodo.18703505)
 5. **CF90** — Knowledge-preserving SVD compression for LLMs. [DOI: 10.5281/zenodo.18718545](https://doi.org/10.5281/zenodo.18718545)
-6. **Contrastive Pretraining Teaches Format Generation, Not Behavioral Knowledge** — 5% injection breaks the behavioral wall at 7M. [DOI: 10.5281/zenodo.18870555](https://doi.org/10.5281/zenodo.18870555)
-7. **Small Language Models Already Know More Than They Can Say** — The 41% universal constant and the generation bottleneck. [DOI: 10.5281/zenodo.18895248](https://doi.org/10.5281/zenodo.18895248)
+6. **Contrastive Pretraining Teaches Format Generation, Not Behavioral Knowledge** — 5% injection breaks the behavioral wall at 7M. [DOI: 10.5281/zenodo.18895233](https://doi.org/10.5281/zenodo.18895233)
+7. **Small Language Models Already Know More Than They Can Say** — The 41% universal constant and the generation bottleneck. [DOI: 10.5281/zenodo.18895249](https://doi.org/10.5281/zenodo.18895249)
 
 ### Repos
 
