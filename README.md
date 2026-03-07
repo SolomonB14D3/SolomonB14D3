@@ -7,6 +7,7 @@
 [![Paper: Confidence Cartography](https://zenodo.org/badge/DOI/10.5281/zenodo.18703505.svg)](https://doi.org/10.5281/zenodo.18703505)
 [![Paper: Contrastive Pretraining](https://zenodo.org/badge/DOI/10.5281/zenodo.18870555.svg)](https://doi.org/10.5281/zenodo.18870555)
 [![Paper: Expression Bottleneck](https://zenodo.org/badge/DOI/10.5281/zenodo.18895248.svg)](https://doi.org/10.5281/zenodo.18895248)
+[![Paper: Snap-On](https://zenodo.org/badge/DOI/10.5281/zenodo.18902617.svg)](https://doi.org/10.5281/zenodo.18902617)
 [![Paper: CF90](https://zenodo.org/badge/DOI/10.5281/zenodo.18718545.svg)](https://doi.org/10.5281/zenodo.18718545)
 
 Building behavioral auditing and alignment tools for LLMs. [Try the demo →](https://huggingface.co/spaces/bsanch52/knowledge-fidelity-demo)
@@ -25,6 +26,12 @@ rho-eval Qwen/Qwen2.5-7B-Instruct --behaviors all
 
 # One-command behavioral repair
 rho-surgery Qwen/Qwen2.5-7B-Instruct -o ./repaired-7b/
+
+# Diagnose expression gaps in base models
+rho-unlock diagnose Qwen/Qwen2.5-1.5B --behaviors mmlu,arc,truthfulqa
+
+# Train a modular adapter (zero knowledge damage)
+snap-on train --model Qwen/Qwen2.5-1.5B --mode logit --save_dir ./adapter
 ```
 
 ### Papers
@@ -36,6 +43,7 @@ rho-surgery Qwen/Qwen2.5-7B-Instruct -o ./repaired-7b/
 5. **CF90** — Knowledge-preserving SVD compression for LLMs. [DOI: 10.5281/zenodo.18718545](https://doi.org/10.5281/zenodo.18718545)
 6. **Contrastive Pretraining Teaches Format Generation, Not Behavioral Knowledge** — 5% injection breaks the behavioral wall at 7M. [DOI: 10.5281/zenodo.18870555](https://doi.org/10.5281/zenodo.18870555)
 7. **Small Language Models Already Know More Than They Can Say** — The 41% universal constant and the generation bottleneck. [DOI: 10.5281/zenodo.18895248](https://doi.org/10.5281/zenodo.18895248)
+8. **Snap-On Communication Modules** — Logit-space adapters that preserve base model knowledge. [DOI: 10.5281/zenodo.18902617](https://doi.org/10.5281/zenodo.18902617)
 
 ### Repos
 
