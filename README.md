@@ -9,6 +9,7 @@
 [![Paper: Expression Bottleneck](https://zenodo.org/badge/DOI/10.5281/zenodo.18895248.svg)](https://doi.org/10.5281/zenodo.18895248)
 [![Paper: Snap-On](https://zenodo.org/badge/DOI/10.5281/zenodo.18902617.svg)](https://doi.org/10.5281/zenodo.18902617)
 [![Paper: CF90](https://zenodo.org/badge/DOI/10.5281/zenodo.18718545.svg)](https://doi.org/10.5281/zenodo.18718545)
+[![Paper: STEM Truth Oracle](https://zenodo.org/badge/DOI/10.5281/zenodo.19005729.svg)](https://doi.org/10.5281/zenodo.19005729)
 
 Building behavioral auditing and alignment tools for LLMs. [Try the demo →](https://huggingface.co/spaces/bsanch52/knowledge-fidelity-demo)
 
@@ -44,6 +45,7 @@ snap-on train --model Qwen/Qwen2.5-1.5B --mode logit --save_dir ./adapter
 6. **Contrastive Pretraining Teaches Format Generation, Not Behavioral Knowledge** — 5% injection breaks the behavioral wall at 7M. [DOI: 10.5281/zenodo.18870555](https://doi.org/10.5281/zenodo.18870555)
 7. **Small Language Models Already Know More Than They Can Say** — The 41% universal constant and the generation bottleneck. [DOI: 10.5281/zenodo.18895248](https://doi.org/10.5281/zenodo.18895248)
 8. **Snap-On Communication Modules** — Logit-space adapters that preserve base model knowledge. [DOI: 10.5281/zenodo.18902617](https://doi.org/10.5281/zenodo.18902617)
+9. **STEM Truth Oracle** — Log-probability ranking reveals and corrects scale-invariant factual biases. [DOI: 10.5281/zenodo.19005729](https://doi.org/10.5281/zenodo.19005729)
 
 ### Repos
 
