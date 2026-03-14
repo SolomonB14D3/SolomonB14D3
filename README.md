@@ -46,11 +46,13 @@ snap-on train --model Qwen/Qwen2.5-1.5B --mode logit --save_dir ./adapter
 7. **Small Language Models Already Know More Than They Can Say** — The 41% universal constant and the generation bottleneck. [DOI: 10.5281/zenodo.18895248](https://doi.org/10.5281/zenodo.18895248)
 8. **Snap-On Communication Modules** — Logit-space adapters that preserve base model knowledge. [DOI: 10.5281/zenodo.18902617](https://doi.org/10.5281/zenodo.18902617)
 9. **STEM Truth Oracle** — Log-probability ranking reveals and corrects scale-invariant factual biases. [DOI: 10.5281/zenodo.19005729](https://doi.org/10.5281/zenodo.19005729)
+10. **Breaking Frozen Priors** — Teaching LLMs to discover conservation laws from numerical simulation. Three-phase pipeline achieves Spearman rho = 0.932 physics ranking. [PDF](https://github.com/SolomonB14D3/noethersolve/blob/main/paper/breaking_frozen_priors.pdf)
 
 ### Repos
 
 | Repo | What it does |
 |------|-------------|
 | [knowledge-fidelity](https://github.com/SolomonB14D3/knowledge-fidelity) | Behavioral auditing + alignment toolkit. [PyPI](https://pypi.org/project/rho-eval/). |
+| [noethersolve](https://github.com/SolomonB14D3/noethersolve) | Autonomous conservation law discovery via LLM oracle + numerical verification. [Dashboard](https://solomonb14d3.github.io/noethersolve/). |
 | [confidence-cartography](https://github.com/SolomonB14D3/confidence-cartography) | Teacher-forced confidence as a false-belief sensor. |
 | [intelligent-svd](https://github.com/SolomonB14D3/intelligent-svd) | Knowledge-preserving SVD compression for LLMs. |
