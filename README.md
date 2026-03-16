@@ -12,6 +12,7 @@
 [![Paper: STEM Truth Oracle](https://zenodo.org/badge/DOI/10.5281/zenodo.19005729.svg)](https://doi.org/10.5281/zenodo.19005729)
 [![Paper: Breaking Frozen Priors](https://zenodo.org/badge/DOI/10.5281/zenodo.19017290.svg)](https://doi.org/10.5281/zenodo.19017290)
 [![Paper: NoetherSolve Toolkit](https://zenodo.org/badge/DOI/10.5281/zenodo.19029880.svg)](https://doi.org/10.5281/zenodo.19029880)
+[![Paper: Unified Oracle Difficulty](https://zenodo.org/badge/DOI/10.5281/zenodo.19055592.svg)](https://doi.org/10.5281/zenodo.19055592)
 
 Building behavioral auditing and alignment tools for LLMs. [Try the demo →](https://huggingface.co/spaces/bsanch52/knowledge-fidelity-demo)
 
@@ -65,6 +66,7 @@ from noethersolve import verify_goldbach, verify_collatz
 9. **STEM Truth Oracle** — Log-probability ranking reveals and corrects scale-invariant factual biases. [DOI: 10.5281/zenodo.19005729](https://doi.org/10.5281/zenodo.19005729)
 10. **Breaking Frozen Priors** — Teaching LLMs to discover conservation laws from numerical simulation. Three-phase pipeline achieves Spearman rho = 0.932 physics ranking. [DOI: 10.5281/zenodo.19017290](https://doi.org/10.5281/zenodo.19017290)
 11. **NoetherSolve Toolkit** — 20 conservation law monitoring, discovery, and scientific auditing tools across physics, genetics, and mathematics. 777 tests, 275 oracle-verified facts. [DOI: 10.5281/zenodo.19029880](https://doi.org/10.5281/zenodo.19029880)
+12. **Unified Theory of Oracle Difficulty** — Four independent mechanisms explain 95%+ of multiple-choice benchmark variance: length ratio, semantic coherence, scoring method, and anti-fluency reformulation. Fluency bias explains 75% of apparent knowledge gaps. [DOI: 10.5281/zenodo.19055592](https://doi.org/10.5281/zenodo.19055592)
 
 ### Repos
 
