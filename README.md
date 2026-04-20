@@ -16,3 +16,10 @@ Building tools that find where AI models are wrong and fix them.
 |------|-------------|
 | [qwen-adapter-correction](https://github.com/Brsanch/qwen-adapter-correction) | Post-transformer adapters for correcting suppressed log-probabilities in language models. |
 | [sqg-lean-proofs](https://github.com/Brsanch/sqg-lean-proofs) | Lean 4 + mathlib formalization of Fourier-space identities for the inviscid Surface Quasi-Geostrophic equation, with a conditional regularity roadmap. 20k+ lines, zero `sorry`, no axioms beyond mathlib. |
+
+### Packages
+
+| Package | What it does |
+|---------|-------------|
+| [noethersolve](https://pypi.org/project/noethersolve/) | 300+ verified computational tools for AI agents via MCP. |
+| [rho-eval](https://pypi.org/project/rho-eval/) | Behavioral auditing toolkit for LLMs. |
